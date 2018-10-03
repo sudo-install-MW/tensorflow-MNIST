@@ -27,8 +27,14 @@ class MNISTChurner:
         with open(self.train_label_path, 'rb') as train_label:
             magic, num = struct.unpack(">II", train_label.read(8))
             label = np.fromfile(train_label, dtype=np.uint8).reshape(num, 1)
-            # TODO
-            # convert label to one hot vector
+            label_one_hot = []
+
+            # convert label to one hot
+            for i in range(label.shape[0]):
+                cur_label = label[i]
+                label_one_hot.append([1 if i == cur_label else 0 for i in range(10)])
+
+            label = np.asarray(label_one_hot)
 
         return img_array, label
 
@@ -42,5 +48,13 @@ class MNISTChurner:
         with open(self.test_label_path, 'rb') as test_label:
             magic, num = struct.unpack(">II", test_label.read(8))
             label = np.fromfile(test_label, dtype=np.uint8).reshape(num, 1)
+
+            label_one_hot = []
+
+            for i in range(label.shape[0]):
+                cur_label = label[i]
+                label_one_hot.append([1 if i == cur_label else 0 for i in range(10)])
+
+            label = np.asarray(label_one_hot)
 
         return img_array, label
