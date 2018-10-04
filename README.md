@@ -13,6 +13,11 @@ This is a warm up project for using tensorflow to best some of the tensorflow fe
 ## Create a working network details
 
 The project has a file structure like <br>
+<img src="readme_pics/file_structure.jpg" alt="Img not found"  width="50%" height="50%" align="middle"/>
 <p>
-<img src="readme_pics/file_structure.jpg" alt="Img not found"/>
+The file architecture.md has the parameters calculated and gives the rough estimates of how computationally expensive the feed forward network is going to be</p><p>
+The script dataset_reader.py is a script which helps in reading the MINIST dataset and returns the np array for input data</p><p>
+The script main.py is the main script which executes training and calls sub scripts required to run the network.
+</p><p>
+The script network.py is the heart of the CNN network which has all the network layers and gets in the input and returns the output after passing it through multiple CNN layers.
 </p>
