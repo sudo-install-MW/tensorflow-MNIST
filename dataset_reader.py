@@ -22,7 +22,7 @@ class MNISTChurner:
         with open(self.train_data_path, 'rb') as train_img:
             magic, num, rows, cols = struct.unpack(">IIII", train_img.read(16))
             img = np.fromfile(train_img, dtype=np.uint8)
-            img_array = img.reshape(num, rows, cols)
+            img_array = img.reshape(num, rows, cols, 1)
 
         with open(self.train_label_path, 'rb') as train_label:
             magic, num = struct.unpack(">II", train_label.read(8))
@@ -43,7 +43,7 @@ class MNISTChurner:
         with open(self.test_data_path, 'rb') as test_img:
             magic, num, rows, cols = struct.unpack(">IIII", test_img.read(16))
             img = np.fromfile(test_img, dtype=np.uint8)
-            img_array = img.reshape(num, rows, cols)
+            img_array = img.reshape(num, rows, cols, 1)
 
         with open(self.test_label_path, 'rb') as test_label:
             magic, num = struct.unpack(">II", test_label.read(8))

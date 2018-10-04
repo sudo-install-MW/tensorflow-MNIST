@@ -32,6 +32,8 @@ train_step = tf.train.AdamOptimizer(learning_rate=0.001).minimize(cross_entropy)
 # Calculate accuracy
 correct_prediction = tf.equal(tf.argmax(y_out, 1), tf.argmax(y, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+
+
 summary_writer = tf.summary.FileWriter('./tmp/logs', sess.graph)
 
 
