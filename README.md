@@ -9,3 +9,8 @@ This is a warm up project for using tensorflow to best some of the tensorflow fe
 
 # Completed task
 <del>1. Create working network</del>
+
+## Create a working network details
+
+The project has a file structure 
+![alt text](./README_utils/file_structure.png)
