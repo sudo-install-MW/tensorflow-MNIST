@@ -6,7 +6,7 @@ def cnn_layer(img_input):
     # conv layer 1
     print("Input shape :", img_input.get_shape())
     print("Initializing weights for layer 1 filter")
-    filter_1 = tf.truncated_normal([3, 3, 1, 32])
+    filter_1 = tf.truncated_normal([3, 3, 1, 8000])
     filter_1 = tf.Variable(filter_1)
     print("Initialized weights for layer 1 filter :", filter_1.get_shape())
     variable_summaries(filter_1)
@@ -32,7 +32,7 @@ def cnn_layer(img_input):
     # conv layer 2
     # create filter weights
     print("Initializing weights for layer 2 filter")
-    filter_2 = tf.truncated_normal([3, 3, 32, 64])
+    filter_2 = tf.truncated_normal([3, 3, 8000, 3000])
     filter_2 = tf.Variable(filter_2)
     print("Initialized weights for layer 2 filter :", filter_2.get_shape())
     layer_2 = tf.nn.conv2d(input=layer_1_p, filter=filter_2, strides=[1, 1, 1, 1], padding="SAME")
@@ -41,7 +41,7 @@ def cnn_layer(img_input):
 
     # create bias variable
     print("Initializing bias for layer 2")
-    layer_2_bias = tf.truncated_normal([filter_2.get_shape()[3]])
+    layer_2_bias = tf.truncated_normal([int(filter_2.get_shape()[3])])
     layer_2_bias = tf.Variable(layer_2_bias)
     print("Initialized bias for layer 2 :", layer_2_bias.get_shape())
     layer_2_out = tf.nn.relu(layer_2 + layer_2_bias)

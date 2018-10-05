@@ -1,6 +1,7 @@
 import tensorflow as tf
 from dataset_reader import MNISTChurner
 from network import cnn_layer
+from tqdm import tqdm
 
 data_path = "/home/mash/universe/sandbox/mnist_feeder/MNIST_data"
 
@@ -14,8 +15,8 @@ print("test data shape is :", test_data.shape)
 print("test label shape is :", test_label.shape)
 
 ######################### HYPERPARAMETERS #########################
-batch_size = 2
-num_of_step = 100000
+batch_size = 16
+num_of_step = 1000
 ######################### HYPERPARAMETERS #########################
 
 # Graph inputs
@@ -47,18 +48,18 @@ init = tf.global_variables_initializer()
 
 with tf.Session() as sess:
     sess.run(init)
-    for steps in range(num_of_step):
+    for steps in tqdm(range(num_of_step)):
 
         # TODO create train data batch to train the model
         start = 0
-        for batch in range(batch_size, train_data.shape[0], batch_size):
+        for batch in tqdm(range(batch_size, train_data.shape[0], batch_size)):
             end = batch
             train_data_batch = train_data[start:end]
             train_label_batch = train_label[start:end]
-            print("training network with {} images".format(train_data_batch.shape[0]))
+            #print("training network with {} images".format(train_data_batch.shape[0]))
             start = batch
             sess.run(optimizer_reduce, feed_dict={x_img: train_data_batch, y_label:train_label_batch})
 
         # TODO test model for the test data
-        accuracy_test = sess.run(accuracy, feed_dict={x_img: test_data[:500], y_label:test_label[:500]})
+        accuracy_test = sess.run(accuracy, feed_dict={x_img: test_data[:1], y_label:test_label[:1]})
         print(accuracy_test)
