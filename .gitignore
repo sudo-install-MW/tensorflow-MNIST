@@ -1,4 +1,7 @@
+# exclude
 tmp
 mnist_data
 __pycache__
 .idea
+
+# include
