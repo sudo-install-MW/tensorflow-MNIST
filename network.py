@@ -41,7 +41,7 @@ def cnn_layer(img_input):
 
     # create bias variable
     print("Initializing bias for layer 2")
-    layer_2_bias = tf.truncated_normal([64])
+    layer_2_bias = tf.truncated_normal([filter_2.get_shape()[3]])
     layer_2_bias = tf.Variable(layer_2_bias)
     print("Initialized bias for layer 2 :", layer_2_bias.get_shape())
     layer_2_out = tf.nn.relu(layer_2 + layer_2_bias)

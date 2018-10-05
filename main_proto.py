@@ -14,8 +14,8 @@ print("test data shape is :", test_data.shape)
 print("test label shape is :", test_label.shape)
 
 ######################### HYPERPARAMETERS #########################
-batch_size = 512
-num_of_step = 10
+batch_size = 2
+num_of_step = 100000
 ######################### HYPERPARAMETERS #########################
 
 # Graph inputs
@@ -55,9 +55,10 @@ with tf.Session() as sess:
             end = batch
             train_data_batch = train_data[start:end]
             train_label_batch = train_label[start:end]
+            print("training network with {} images".format(train_data_batch.shape[0]))
             start = batch
             sess.run(optimizer_reduce, feed_dict={x_img: train_data_batch, y_label:train_label_batch})
 
         # TODO test model for the test data
-        accuracy_test = sess.run(accuracy, feed_dict={x_img: test_data, y_label:test_label})
+        accuracy_test = sess.run(accuracy, feed_dict={x_img: test_data[:500], y_label:test_label[:500]})
         print(accuracy_test)
