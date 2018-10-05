@@ -21,3 +21,5 @@ The script main.py is the main script which executes training and calls sub scri
 </p><p>
 The script network.py is the heart of the CNN network which has all the network layers and gets in the input and returns the output after passing it through multiple CNN layers.
 </p>
+
+end
